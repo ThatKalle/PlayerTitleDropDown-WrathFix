@@ -16,7 +16,7 @@ function PlayerTitleDropDown_Initialize()
 			info.text = titleName;
 			info.func = PlayerTitleDropDown_OnClick;
 			info.value = i;
-            info.checked = checked;
+			info.checked = checked;
 			UIDropDownMenu_AddButton(info);
 		end
 	end
