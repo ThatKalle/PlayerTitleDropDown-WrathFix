@@ -1,0 +1,8 @@
+## Interface: 30401
+## Title: PlayerTitleDropDown-WrathFix
+## Notes: Fixes player Title select dropdown UI bug.
+## Author: Erniaa
+## Version: 1.0.0
+## DefaultState: enabled
+
+PlayerTitleDropDown-WrathFix.lua
