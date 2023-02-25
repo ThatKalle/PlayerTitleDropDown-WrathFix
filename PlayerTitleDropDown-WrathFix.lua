@@ -1,6 +1,3 @@
--- Code extracted from /Interface_Wrath/FrameXML/PaperDollFrame.lua
--- https://github.com/tomrus88/BlizzardInterfaceCode/blob/wrath/Interface_Wrath/FrameXML/PaperDollFrame.lua
-
 function PlayerTitleDropDown_Initialize()
 	-- Setup buttons
 	local info = UIDropDownMenu_CreateInfo();
