@@ -16,7 +16,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      pull-requests: read
 
     steps:
     - uses: actions/checkout@v3
@@ -41,9 +40,9 @@ jobs:
         zip -9 -r ${{steps.init.outputs.tag_name}}.zip ${{steps.init.outputs.addon_name}}
         cd ..
 
-    - name: Tag this version
-      id: create_release        
-      uses: ncipollo/release-action@v1
+    - name: Tag and Release
+      id: create_release
+      uses: softprops/action-gh-release@v1
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
@@ -52,13 +51,4 @@ jobs:
         body: ${{steps.init.outputs.addon_name}} ${{github.event.inputs.version}}
         draft: false
         prerelease: false
-
-    - name: Add mainline zip to release
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: .releases/${{steps.init.outputs.tag_name}}.zip
-        asset_name: ${{steps.init.outputs.tag_name}}.zip
-        asset_content_type: application/zip
+        files: .releases/${{steps.init.outputs.tag_name}}.zip
