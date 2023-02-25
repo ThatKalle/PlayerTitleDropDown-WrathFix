@@ -26,8 +26,8 @@ jobs:
         addon_name=$(ls *.toc)
         addon_name=$(basename $addon_name .toc)
         tag_name=${addon_name}-${{github.event.inputs.version}}
-        echo "::set-output name=addon_name::${addon_name}"
-        echo "::set-output name=tag_name::${tag_name}"
+        echo "addon_name=${addon_name}" >> $GITHUB_OUTPUT
+        echo "tag_name=${tag_name}" >> $GITHUB_OUTPUT
 
     - name: Make folder for zips
       run: |
@@ -37,7 +37,7 @@ jobs:
     - name: Create mainline zip
       run: |
         cd .releases
-        zip -9 -r ${{steps.init.outputs.tag_name}}.zip ${{steps.init.outputs.addon_name}}
+        zip -9 -r ${{steps.init.outputs.tag_name}}.zip ${{steps.init.outputs.addon_name}} -x *.git*
         cd ..
 
     - name: Tag and Release
