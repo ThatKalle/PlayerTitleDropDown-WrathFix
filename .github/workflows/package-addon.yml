@@ -46,7 +46,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag: ${{steps.init.outputs.tag_name}}
+        tag_name: ${{steps.init.outputs.tag_name}}
         name: ${{steps.init.outputs.addon_name}} ${{github.event.inputs.version}}
         body: ${{steps.init.outputs.addon_name}} ${{github.event.inputs.version}}
         draft: false
