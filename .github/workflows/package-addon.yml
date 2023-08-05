@@ -8,7 +8,7 @@ on:
         required: true
 
 env:
-  WRATH_VERSION: 30401
+  WRATH_VERSION: 30402
 
 jobs:
   package:
@@ -18,7 +18,7 @@ jobs:
       contents: write
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9  # v3.5.3
 
     - name: Get name of addon
       id: init
@@ -42,7 +42,7 @@ jobs:
 
     - name: Tag and Release
       id: create_release
-      uses: softprops/action-gh-release@v1
+      uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844  # v0.1.15
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:

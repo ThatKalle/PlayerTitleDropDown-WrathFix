@@ -11,9 +11,9 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
+        uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9  # v3.5.3
 
       - name: WoW Lua Lint
-        uses: davidcraig/action-wow-lint@v1.0.1
+        uses: davidcraig/action-wow-lint@e049cf3202b7722a2f505dc59de6d69ff324a037  # v1.0.1
         with:
           path-to-files: ./PlayerTitleDropDown-WrathFix.lua
