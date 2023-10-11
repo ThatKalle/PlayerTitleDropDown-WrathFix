@@ -8,7 +8,7 @@ on:
         required: true
 
 env:
-  WRATH_VERSION: 30402
+  WRATH_VERSION: 30403
 
 jobs:
   package:
@@ -18,7 +18,7 @@ jobs:
       contents: write
 
     steps:
-    - uses: actions/checkout@c85c95e3d7251135ab7dc9ce3241c5835cc595a9  # v3.5.3
+    - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
 
     - name: Get name of addon
       id: init
@@ -32,7 +32,7 @@ jobs:
     - name: Make folder for zips
       run: |
         mkdir -p .releases/${{steps.init.outputs.addon_name}}
-        rsync -r --exclude={'.*', 'img', 'README.md'} . .releases/${{steps.init.outputs.addon_name}}
+        rsync -r --exclude={'img/*','README.md'} . .releases/${{steps.init.outputs.addon_name}}
 
     - name: Create mainline zip
       run: |
@@ -42,7 +42,7 @@ jobs:
 
     - name: Tag and Release
       id: create_release
-      uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844  # v0.1.15
+      uses: softprops/action-gh-release@de2c0eb89ae2a093876385947365aca7b0e5f844 # v0.1.15
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
